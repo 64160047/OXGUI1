@@ -11,6 +11,19 @@ package com.mycompany.oxgui1;
 public class OxGUI1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!!!");
+        Game game = new Game();
+        game.showWelcome();
+        game.newBoard();
+        while(true) {
+            game.showTable();
+            game.showTurn();
+            game.inputRowCol();
+            if(game.isFinish()) {
+                game.showTable();
+                game.showResult();
+                game.showStat();
+                game.newBoard();
+            }
+        }               
     }
 }
