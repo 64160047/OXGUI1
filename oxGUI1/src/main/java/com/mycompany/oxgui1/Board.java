@@ -63,6 +63,7 @@ public class Board {
     }
     
     public boolean setRowCol(int row, int col) {
+        if(isWin() ||isDraw()) return false;
         if (row > 3 || col > 3 || row < 1 || col < 1) {
             return false;
         }
