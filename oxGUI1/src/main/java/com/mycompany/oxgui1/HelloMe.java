@@ -28,6 +28,7 @@ public class HelloMe extends javax.swing.JFrame {
 
         btnHello = new javax.swing.JButton();
         txtHello = new javax.swing.JLabel();
+        edtName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,35 +44,53 @@ public class HelloMe extends javax.swing.JFrame {
         txtHello.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtHello.setText("Hello OX");
 
+        edtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(311, Short.MAX_VALUE)
+                .addComponent(btnHello)
+                .addGap(320, 320, 320))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHello)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtHello)
-                        .addGap(16, 16, 16)))
-                .addGap(298, 298, 298))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(txtHello)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(btnHello)
-                .addGap(38, 38, 38)
+                .addGap(24, 24, 24)
+                .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(txtHello)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelloActionPerformed
-       txtHello.setText("Hello XO!!!");
+        String name = edtName.getText();
+        txtHello.setText(" Hello XO!!!  " + name);
     }//GEN-LAST:event_btnHelloActionPerformed
+
+    private void edtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,6 +129,7 @@ public class HelloMe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
+    private javax.swing.JTextField edtName;
     private javax.swing.JLabel txtHello;
     // End of variables declaration//GEN-END:variables
 }
