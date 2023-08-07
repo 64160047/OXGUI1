@@ -20,6 +20,7 @@ public class OXGameUI extends javax.swing.JFrame {
         showWelcome();
         newBoard();
         showBoard();
+        showTurn();
     }
 
     /**
@@ -256,7 +257,9 @@ public class OXGameUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable1ActionPerformed
-        // TODO add your handling code here:
+       row = 1;
+       col = 1;
+       board.setRowCol(row, col);
     }//GEN-LAST:event_btnTable1ActionPerformed
 
     private void btnTable4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable4ActionPerformed
@@ -366,5 +369,9 @@ public class OXGameUI extends javax.swing.JFrame {
         
 
 
+    }
+
+    private void showTurn() {
+        txtMessage.setText("Turn " + board.getCurrentPlayer().getSymbol());
     }
 }
