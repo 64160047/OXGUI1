@@ -27,6 +27,7 @@ public class HelloMe extends javax.swing.JFrame {
     private void initComponents() {
 
         btnHello = new javax.swing.JButton();
+        txtHello = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,13 +39,21 @@ public class HelloMe extends javax.swing.JFrame {
             }
         });
 
+        txtHello.setFont(new java.awt.Font("Palatino", 1, 18)); // NOI18N
+        txtHello.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtHello.setText("Hello OX");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(333, Short.MAX_VALUE)
-                .addComponent(btnHello)
+                .addContainerGap(311, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHello)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtHello)
+                        .addGap(16, 16, 16)))
                 .addGap(298, 298, 298))
         );
         layout.setVerticalGroup(
@@ -52,14 +61,16 @@ public class HelloMe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(btnHello)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(txtHello)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelloActionPerformed
-        // TODO add your handling code here:
+       txtHello.setText("Hello XO!!!");
     }//GEN-LAST:event_btnHelloActionPerformed
 
     /**
@@ -99,5 +110,6 @@ public class HelloMe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHello;
+    private javax.swing.JLabel txtHello;
     // End of variables declaration//GEN-END:variables
 }
