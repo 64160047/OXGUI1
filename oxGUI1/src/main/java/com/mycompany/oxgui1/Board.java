@@ -9,6 +9,7 @@ package com.mycompany.oxgui1;
  * @author minnie
  */
 public class Board {
+
     private char[][] table = {{'-', '-', '-'}, {'-', '-', '-'}, {'-', '-', '-'}};
     private Player currentPlayer;
     private Player o;
@@ -149,5 +150,4 @@ public class Board {
         }
         return true;
     }
-    
 }
