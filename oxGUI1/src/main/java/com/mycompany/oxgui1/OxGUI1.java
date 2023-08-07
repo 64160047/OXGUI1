@@ -10,7 +10,7 @@ package com.mycompany.oxgui1;
  */
 public class OxGUI1 {
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         Game game = new Game();
         game.showWelcome();
         game.newBoard();
@@ -26,4 +26,5 @@ public class OxGUI1 {
             }
         }               
     }
+
 }
