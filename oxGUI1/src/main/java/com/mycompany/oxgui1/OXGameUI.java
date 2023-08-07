@@ -18,10 +18,12 @@ public class OXGameUI extends javax.swing.JFrame {
         this.o = new Player('O');
         this.x = new Player('X');
         showWelcome();
-        newBoard();
-        showBoard();
-        showTurn();
+        newGame();
+        
+        
+
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,6 +186,11 @@ public class OXGameUI extends javax.swing.JFrame {
         btnNewGame.setBackground(new java.awt.Color(255, 225, 135));
         btnNewGame.setFont(new java.awt.Font("Palatino", 1, 18)); // NOI18N
         btnNewGame.setText("NEW GAME");
+        btnNewGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -267,59 +274,63 @@ public class OXGameUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable1ActionPerformed
-       row = 1;
-       col = 1;
-       process();
+        row = 1;
+        col = 1;
+        process();
     }//GEN-LAST:event_btnTable1ActionPerformed
 
 
     private void btnTable4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable4ActionPerformed
-       row = 2;
-       col = 1;
-       process();
+        row = 2;
+        col = 1;
+        process();
     }//GEN-LAST:event_btnTable4ActionPerformed
 
     private void btnTable5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable5ActionPerformed
-       row = 2;
-       col = 2;
-       process();
+        row = 2;
+        col = 2;
+        process();
     }//GEN-LAST:event_btnTable5ActionPerformed
 
     private void btnTable6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable6ActionPerformed
-       row = 2;
-       col = 3;
-       process();
+        row = 2;
+        col = 3;
+        process();
     }//GEN-LAST:event_btnTable6ActionPerformed
 
     private void btnTable7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable7ActionPerformed
-       row = 3;
-       col = 1;
-       process();
+        row = 3;
+        col = 1;
+        process();
     }//GEN-LAST:event_btnTable7ActionPerformed
 
     private void btnTable8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable8ActionPerformed
-       row = 3;
-       col = 2;
-       process();
+        row = 3;
+        col = 2;
+        process();
     }//GEN-LAST:event_btnTable8ActionPerformed
 
     private void btnTable9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable9ActionPerformed
-       row = 3;
-       col = 3;
-       process();
+        row = 3;
+        col = 3;
+        process();
     }//GEN-LAST:event_btnTable9ActionPerformed
 
     private void btnTable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable2ActionPerformed
-       row = 1;
-       col = 2;
-       process();
+        row = 1;
+        col = 2;
+        process();
     }//GEN-LAST:event_btnTable2ActionPerformed
 
     private void btnTable3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTable3ActionPerformed
-       row = 1;
-       col = 3;
-       process();
+        row = 1;
+        col = 3;
+        process();
     }//GEN-LAST:event_btnTable3ActionPerformed
+
+    private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
+       newGame();
+    }//GEN-LAST:event_btnNewGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,7 +385,7 @@ public class OXGameUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel txtMessage;
     // End of variables declaration//GEN-END:variables
- 
+
     private Player o;
     private Player x;
     private int row;
@@ -386,33 +397,58 @@ public class OXGameUI extends javax.swing.JFrame {
     }
 
     private void newBoard() {
-        board = new Board(o,x);
-       
+        board = new Board(o, x);
+
     }
 
-    private void showBoard() {
+    private void showTable() {
         char[][] table = board.getTable();
-        btnTable1.setText(table[0][0]+ "");
-        btnTable2.setText(table[0][1]+ "");
-        btnTable3.setText(table[0][2]+ "");
-        btnTable4.setText(table[1][0]+ "");
-        btnTable5.setText(table[1][1]+ "");
-        btnTable6.setText(table[1][2]+ "");
-        btnTable7.setText(table[2][0]+ "");
-        btnTable8.setText(table[2][1]+ "");
-        btnTable9.setText(table[2][2]+ "");
-        
-
+        btnTable1.setText(table[0][0] + "");
+        btnTable2.setText(table[0][1] + "");
+        btnTable3.setText(table[0][2] + "");
+        btnTable4.setText(table[1][0] + "");
+        btnTable5.setText(table[1][1] + "");
+        btnTable6.setText(table[1][2] + "");
+        btnTable7.setText(table[2][0] + "");
+        btnTable8.setText(table[2][1] + "");
+        btnTable9.setText(table[2][2] + "");
 
     }
 
     private void showTurn() {
         txtMessage.setText("Turn " + board.getCurrentPlayer().getSymbol());
     }
-    
+
     private void process() {
         board.setRowCol(row, col);
-        showBoard();
+        showTable();
+        showTurn();
+        if (isFinish()) {
+            showTable();
+            showResult();
+            //showStat();
+        }
+
+    }
+    private boolean isFinish() {
+        if(board.isDraw()|| board.isWin()) {
+            return true;
+        }
+        return false;
+    }
+
+    public void showResult() {
+        if(board.isDraw()) {
+            txtMessage.setText("Draw!!!");
+        } else if(board.isWin()) {
+           txtMessage.setText(board.getCurrentPlayer().getSymbol() + " Win");
+        }
+    }
+
+
+    private void newGame() {
+        newBoard();
+        showTable();
         showTurn();
     }
 }
