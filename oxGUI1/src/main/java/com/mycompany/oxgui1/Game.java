@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author minnie
  */
 public class Game {
-     private Player o;
+    private Player o;
     private Player x;
     private int row;
     private int col;
@@ -72,3 +72,4 @@ public class Game {
     }
     
 }
+
