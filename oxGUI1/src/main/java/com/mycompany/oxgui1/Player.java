@@ -9,7 +9,7 @@ package com.mycompany.oxgui1;
  * @author minnie
  */
 public class Player {
-      private char symbol;
+    private char symbol;
     private int win;
     private int loss;
     private int draw;
@@ -54,6 +54,5 @@ public class Player {
     public String toString() {
         return "Player{" + "symbol=" + symbol + ", win=" + win + ", loss=" + loss + ", draw=" + draw + '}';
     }
-
     
 }
