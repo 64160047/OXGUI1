@@ -4,6 +4,16 @@
  */
 package com.mycompany.oxgui1;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  *
  * @author minnie
@@ -17,11 +27,40 @@ public class OXGameUI extends javax.swing.JFrame {
         initComponents();
         this.o = new Player('O');
         this.x = new Player('X');
+        load();
         showWelcome();
         newGame();
+        showStat();
         
         
 
+    }
+    public void load(){
+        FileInputStream fis = null;
+        try {
+            File file = new File("player.dat");
+            fis = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Player o = (Player) ois.readObject();
+            Player x = (Player) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (Exception ex) {
+             System.out.println("Load Error !!!");
+        } finally {
+            try {
+                if(fis != null ) {
+                 fis.close();
+            }
+               
+            } catch (IOException ex) {
+                Logger.getLogger(OXGameUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+    public void save() {
+        
     }
    
 
