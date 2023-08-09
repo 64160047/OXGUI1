@@ -4,6 +4,9 @@
  */
 package com.mycompany.oxgui1;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author minnie
@@ -38,8 +41,10 @@ public class Friend {
         return age;
     }
 
-    public void setAge(int age) {
-        if(age<0) return;
+    public void setAge(int age) throws Exception {
+        if(age<0) {
+            throw new Exception();
+        }
         this.age = age;
     }
 
@@ -57,9 +62,13 @@ public class Friend {
     }
     
     public static void main(String[] args) {
-        Friend f1 = new Friend("Min",20,"0812345678");
-        f1.setAge(-1);
-        System.out.println(f1.toString());
+        try {
+            Friend f1 = new Friend("Min",20,"0812345678");
+            f1.setAge(-1);
+            System.out.println(f1.toString());
+        } catch (Exception ex) {
+            System.out.println("Error");
+        }
                 
     }
             
