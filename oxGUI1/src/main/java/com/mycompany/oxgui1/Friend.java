@@ -4,6 +4,7 @@
  */
 package com.mycompany.oxgui1;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author minnie
  */
-public class Friend {
+public class Friend implements Serializable {
     private int id;
     private String name;
     private int age;
