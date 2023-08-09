@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,8 +42,8 @@ public class OXGameUI extends javax.swing.JFrame {
             File file = new File("player.dat");
             fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Player o = (Player) ois.readObject();
-            Player x = (Player) ois.readObject();
+            this.o = (Player) ois.readObject();
+            this.x = (Player) ois.readObject();
             ois.close();
             fis.close();
         } catch (Exception ex) {
@@ -59,7 +60,24 @@ public class OXGameUI extends javax.swing.JFrame {
         }
         
     }
-    public void save() {
+    public void save(){
+        try {
+            FileOutputStream fos = null;
+            
+            File file = new File("player.dat");
+            fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(o);
+            oos.writeObject(x);
+            oos.close();
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(OXGameUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(OXGameUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
     }
    
@@ -527,6 +545,7 @@ public class OXGameUI extends javax.swing.JFrame {
             showTable();
             showResult();
             showStat();
+            save();
         }
 
     }
