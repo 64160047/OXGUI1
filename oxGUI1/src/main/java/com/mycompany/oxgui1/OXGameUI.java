@@ -211,7 +211,7 @@ public class OXGameUI extends javax.swing.JFrame {
         txtOLoss.setOpaque(true);
 
         txtXWin.setBackground(new java.awt.Color(204, 255, 204));
-        txtXWin.setText("win: 0");
+        txtXWin.setText("Win: 0");
         txtXWin.setOpaque(true);
 
         txtXDraw.setBackground(new java.awt.Color(204, 255, 255));
