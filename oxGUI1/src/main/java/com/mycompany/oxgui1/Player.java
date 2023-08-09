@@ -4,11 +4,13 @@
  */
 package com.mycompany.oxgui1;
 
+import java.io.Serializable;
+
 /**
  *
  * @author minnie
  */
-public class Player {
+public class Player implements Serializable {
     private char symbol;
     private int win;
     private int loss;
