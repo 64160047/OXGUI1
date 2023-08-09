@@ -199,7 +199,7 @@ public class OXGameUI extends javax.swing.JFrame {
         });
 
         txtOWin.setBackground(new java.awt.Color(204, 255, 204));
-        txtOWin.setText("win: 0");
+        txtOWin.setText("Win: 0");
         txtOWin.setOpaque(true);
 
         txtODraw.setBackground(new java.awt.Color(204, 255, 255));
